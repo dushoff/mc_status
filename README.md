@@ -1,1 +1,1 @@
-# mc_status
+This is a README
