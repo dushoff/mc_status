@@ -1,10 +1,10 @@
-Code to accompany Shi, Li and Dushoff (add DOI, title, etc.)
+# Code to accompany [Shi et al., Evidence that Promotion of Male Circumcision did not lead to Sexual Risk Compensation in Prioritized Sub-Saharan Countries](http://dx.doi.org/10.1371/journal.pone.0175928)
 
-To reproduce our work, you will need to download data from DHS, since we can't supply this, or any of its direct products. You can apply for access at http://dhsprogram.com/.
+To reproduce our work, you will need to download data from DHS, since we are not allowed to supply this, or any of its direct products. You can apply for access at http://dhsprogram.com/.
 
 ## Instructions 
 
-These are tested on linux; should work on Mac; will need some hacking to work on Windows.
+These are tested on linux and Mac. Hacking will be required to make it the make rules work on Windows (but the R code should be runnable there).
 
 * Clone or download the repo
 * Download the DHS files required into data/DHS_downloads/ (see [README from that directory](data/DHS_downloads/README.md))
