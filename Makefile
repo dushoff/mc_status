@@ -33,6 +33,13 @@ selection = $(code)/mc_data
 
 ######################################################################
 
+## This stuff is not used here (further upstream), but is recorded for convenience in repo management
+
+convert_code = code/DHS_convert/
+Sources += $(convert_code)/Makefile $(convert_code)/standard.files.mk
+
+######################################################################
+
 Sources += $(wildcard *.R)
 
 ### Data sets
