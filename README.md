@@ -7,7 +7,7 @@ To reproduce our work, you will need to download data from DHS, since we can't s
 These are tested on linux; should work on Mac; will need some hacking to work on Windows.
 
 * Clone or download the repo
-* Download the DHS files required into data/something
+* Download the DHS files required into data/DHS_downloads/ (see [README from that directory](data/DHS_downloads/README.md)
 * type `make baseline` in a terminal to convert and crunch all the files
 
 Going beyond here may be slow; the models take a while to fit.
