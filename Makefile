@@ -2,7 +2,7 @@
 ### Hooks 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ke4.recode.Rout 
+target pngtarget pdftarget vtarget acrtarget: dev 
 
 ##################################################################
 
@@ -18,6 +18,11 @@ mc_data = $(data)/mc_data
 
 -include local.mk
 ms = $(code)/makestuff
+
+# This is the local configuration we happen to be using right now
+Sources += dev.mk
+dev:
+	/bin/ln -fs dev.mk local.mk
 
 ##################################################################
 
