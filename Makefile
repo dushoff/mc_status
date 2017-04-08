@@ -37,6 +37,7 @@ selection = $(code)/mc_data
 
 convert_code = code/DHS_convert/
 Sources += $(convert_code)/Makefile $(convert_code)/standard.files.mk
+Sources += $(wildcard $(convert_code)/*.R)
 
 ######################################################################
 
@@ -265,6 +266,7 @@ partnerYearStatus_int.Rout:
 
 Sources += $(wildcard $(ms)/*.mk)
 Sources += $(wildcard $(ms)/RR/*.*)
+Sources += $(wildcard $(ms)/wrapR/*.*)
 
 -include $(ms)/os.mk
 -include $(ms)/git.mk

@@ -2,7 +2,9 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: now 
+target pngtarget pdftarget vtarget acrtarget: converted/Kenya_IV.DHS.IV.men.Rout 
+
+converted/Kenya_IV.DHS.IV.men.Rout:
 
 ##################################################################
 
@@ -30,15 +32,10 @@ converted = $(data)/DHS_convert
 
 ### Directories
 
-## Dropbox folder for RData files made here
+## Folder for RData files made here
+converted/%: converted
 converted: $(converted)
-	$(forcelink)
-
-downloaded: $(downloaded)
-	$(forcelink)
-
-now:
-	ls $(downloaded)
+	$(lnf)
 
 $(converted):
 	$(MKDIR)
@@ -81,6 +78,7 @@ converted/%.DHS.IV.cr.Rout converted/%.DHS.V.cr.Rout converted/%.DHS.VI.cr.Rout 
 
 ##################################################################
 
+-include $(ms)/os.mk
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
 -include $(ms)/wrapR.mk

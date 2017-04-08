@@ -6,11 +6,15 @@
 Sources = Makefile .gitignore 
 # include $(ms)/perl.def
 
+### Directory basis
 dirroot = ../../
 code = $(dirroot)/code
 data = $(dirroot)/data
+
+### Directories
 converted = $(data)/DHS_convert
 convert_rules = $(code)/DHS_convert
+selected = $(data)/mc_data
 
 -include local.mk
 ms = $(code)/makestuff
@@ -19,24 +23,30 @@ ms = $(code)/makestuff
 
 ## Content
 
-## converted is where we keep simple, edited R versions of DHS sets
-## DHS_convert are the rules for converting them
+## converted is where we keep simple, slightly cleaned R versions of DHS sets
+## convert_rules are the rules for converting them
 converted/%: $(converted) 
 	cd $(convert_rules) && $(MAKE) converted/$*
 
 converted: $(converted)
-	$(forcelink)
+	$(lnf)
 
 $(converted):
-	$(MKDIR)
+	$(mkdir)
 
 Sources += select.csv
 selected/%.Rout: select.csv wselect.R 
 	$(MAKE) selected
 	$(run-R)
 
-selected: $(data)/mc_data
-	$(forcelink)
+selected: $(selected)
+	$(lnf)
+
+now: $(selected)
+	ls $<
+
+$(selected):
+	mkdir $@
 
 ######################################################################
 
@@ -81,3 +91,4 @@ selection.out: $(sets:%=selected/%.Rout)
 
 -include $(ms)/git.mk
 -include $(ms)/wrapR.mk
+-include $(ms)/os.mk
