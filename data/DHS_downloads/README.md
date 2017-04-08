@@ -1,4 +1,4 @@
-This directory should have the following files, which can be requested downloaded from http://dhsprogram.com/
+This directory should have the following files, which can be requested and downloaded from http://dhsprogram.com/
 ```
 kemr42fl.sav
 kemr70fl.sav
