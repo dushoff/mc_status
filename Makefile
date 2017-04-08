@@ -8,8 +8,7 @@ target pngtarget pdftarget vtarget acrtarget: auto.html
 
 # make files and directories
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md 
-include stuff.mk
+Sources = Makefile .gitignore README.md LICENSE.md 
 # include $(ms)/perl.def
 
 Sources += dushoff.mk
