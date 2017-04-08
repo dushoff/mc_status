@@ -208,34 +208,21 @@ new_table.pdf: new_table.tex
 
 ######################################################################
 
-## Combine all of the recency surveys
-
-## How do we handle the "typical" problem in effects?
-
-effectTest.Rout: surveys.Rout effectTest.R
-
-effectPlots.Rout: effectTest.Rout effectPlots.R
-
-## Explore a little bit
-patterns.Rout: surveys.Rout patterns.R
-	$(run-R)
-
-## Make a model (fingers crossed!)
+## Fit the main models
 condomStatus.Rout: surveys.Rout condomStatus.R
 partnerYearStatus.Rout: surveys.Rout partnerYearStatus.R
 
 ## Variable p-values
+condomStatus_varlvlsum.Rout partnerYearStatus_varlvlsum.Rout:
 %_varlvlsum.Rout: %.Rout varlvlsum.R
 	$(run-R)
 
+condomStatus_isoplots.Rout partnerYearStatus_isoplots.Rout:
 .PRECIOUS: %_isoplots.Rout
-
-condomStatus_isoplots.Rout:
-partnerYearStatus_isoplots.Rout:
 %_isoplots.Rout: %_varlvlsum.Rout ordfuns.R plotFuns.R iso.R
 	$(run-R)
 
-## Int plots (status models only)                                               
+## Interaction plots (status models only)
 .PRECIOUS: %_intplots.Rout
 condomStatus_intplots.Rout:
 partnerYearStatus_isoplots.Rout:
@@ -250,15 +237,6 @@ partnerYearStatus_int.Rout:
 .PRECIOUS: %_int.Rout
 %_int.Rout: %_intplots.Rout ordfuns.Rout effectSize.R
 	$(run-R)
-
-## MC Cat plots (recency models only)
-
-.PRECIOUS: %_MCcat.Rout
-%_MCcat.Rout: %_load.Rout ordfuns.R plotFuns.R iso.R MCcat.R
-	$(run-R)
-
-#%_MCcat.Rout: %_varlvlsum.Rout ordfuns.R plotFuns.R iso.R MCcat.R
-	#$(run-R)
 
 ### Makestuff
 

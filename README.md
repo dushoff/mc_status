@@ -12,4 +12,8 @@ These are tested on linux; should work on Mac; will need some hacking to work on
 
 Going beyond here may be slow; the models take a while to fit.
 
-You should be able to make 
+You should be able to make targets by saying (for example) `make partnerYearStatus.Rout`, or pictures by saying `make condomStatus_isoplots.Rout.pdf`
+
+## Requirements
+
+You will need a new-ish version of R, and also several packages. A complete list of packages used in the project is given in packages.R. Some may be less important than others.
