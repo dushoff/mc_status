@@ -39,6 +39,9 @@ convert_code = code/DHS_convert/
 Sources += $(convert_code)/Makefile $(convert_code)/standard.files.mk
 Sources += $(wildcard $(convert_code)/*.R)
 
+downloads = data/DHS_downloads/
+Sources += $(downloads)/README.md
+
 ######################################################################
 
 Sources += $(wildcard *.R)

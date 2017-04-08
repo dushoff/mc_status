@@ -1,0 +1,21 @@
+This directory should have the following files, which can be requested downloaded from http://dhsprogram.com/
+kemr42fl.sav
+kemr70fl.sav
+lsmr41fl.sav
+lsmr71fl.sav
+mwmr4dfl.sav
+mwmr61fl.sav
+mzmr41fl.sav
+mzmr62fl.sav
+nmmr51fl.sav
+nmmr61fl.sav
+rwmr53fl.sav
+rwmr61fl.sav
+tzmr4ifl.sav
+tzmr61fl.sav
+ugmr52fl.sav
+ugmr60fl.sav
+zmmr51fl.sav
+zmmr61fl.sav
+zwmr52fl.sav
+zwmr62fl.sav
