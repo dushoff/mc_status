@@ -2,16 +2,22 @@
 ### Hooks 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: auto.html 
+target pngtarget pdftarget vtarget acrtarget: ke4.recode.Rout 
 
 ##################################################################
 
-# make files and directories
+Sources = Makefile .gitignore README.md LICENSE
 
-Sources = Makefile .gitignore README.md LICENSE.md 
-# include $(ms)/perl.def
+## ADVANCED
+## The recommended way to change these directories is with a local makefile. 
+## The recommended way to make a local makefile is to push a file with a specific name, and then manually link local.mk to your specific local makefile
+## local.mk does not exist out of the box; this should not cause problems
+code = ./code
+data = ./data
+mc_data = $(data)/mc_data
 
-Sources += dushoff.mk
+-include local.mk
+ms = $(code)/makestuff
 
 ##################################################################
 
@@ -29,12 +35,10 @@ all: combines.output surveys.Rout condomStatus.Rout
 ### Recoding
 Sources += $(wildcard *.ccsv *.tsv)
 
-## need upstream select code to make ...RData. downstream will call this %%.Rout
-
+ke4.recode.Rout:
 
 .PRECIOUS: %.recode.Rout
-ke4.recode.Rout:
-%.recode.Rout: %.Rout recodeFuns.Rout religion_basic.ccsv partnership_basic.ccsv mccut.csv recode.R
+%.recode.Rout: $(mc_data)/%.Rout recodeFuns.Rout religion_basic.ccsv partnership_basic.ccsv mccut.csv recode.R
 	$(run-R)
 
 recodes.output: $(sets:%=%.recode.Routput)
@@ -232,27 +236,13 @@ partnerYearStatus_int.Rout:
 #%_MCcat.Rout: %_varlvlsum.Rout ordfuns.R plotFuns.R iso.R MCcat.R
 	#$(run-R)
 
-## Crib 
-
-.PRECIOUS: %.tsv %.ccsv %.csv %.R
-# %.tsv %.ccsv %.csv %.R: 
-	# $(CP) cribdir/$@ .
-
 ### Makestuff
 
-## Change this name to download a new version of the makestuff directory
-# Makefile: start.makestuff
+Sources += $(wildcard $(ms)/*.mk)
+Sources += $(wildcard $(ms)/RR/*.*)
 
+-include $(ms)/os.mk
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
--include $(ms)/pandoc.mk
-
 -include $(ms)/wrapR.mk
--include $(ms)/linkdirs.mk
-
--include $(ms)/flextex.mk
--include $(ms)/bibtex.def
-
-export autorefs = autorefs
--include autorefs/inc.mk
 
