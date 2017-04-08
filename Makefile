@@ -36,7 +36,7 @@ selection = $(code)/mc_data
 ## This stuff is not used here (further upstream), but is recorded for convenience in repo management
 
 convert_code = code/DHS_convert/
-Sources += $(convert_code)/Makefile $(convert_code)/standard.files.mk
+Sources += $(convert_code)/README.md $(convert_code)/Makefile $(convert_code)/standard.files.mk
 Sources += $(wildcard $(convert_code)/*.R)
 
 downloads = data/DHS_downloads/
@@ -57,7 +57,7 @@ baseline: combines.output surveys.Rout
 
 ### Upstream files are first "converted", then selected. We ask for selected files from the mc_data directory; Upstream rules responsible for asking for converted files.
 
-Sources += $(selection)/Makefile $(selection)/select.csv $(selection)/wselect.R
+Sources += $(selection)/README.md $(selection)/Makefile $(selection)/select.csv $(selection)/wselect.R
 $(mc_data)/%.Rout:
 	cd $(selection) && $(MAKE) selected/$*.Rout
 
