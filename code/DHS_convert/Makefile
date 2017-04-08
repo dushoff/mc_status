@@ -32,13 +32,17 @@ converted = $(data)/DHS_convert
 
 ### Directories
 
+Makefile: downloaded converted
+
 ## Folder for RData files made here
-converted/%: converted
 converted: $(converted)
 	$(lnf)
-
 $(converted):
 	$(MKDIR)
+
+## Folder for .sav files downloaded from DHS
+downloaded: $(downloaded)
+	$(lnf)
 
 ##################################################################
 

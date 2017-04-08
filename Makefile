@@ -2,7 +2,7 @@
 ### Hooks 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: ke4.recode.Rout 
+target pngtarget pdftarget vtarget acrtarget: effectPlots.Rout 
 
 ##################################################################
 
@@ -48,7 +48,7 @@ sets = ke4 ke7 ls4 ls7 mw4 mw6 mz4 mz6 nm5 nm6 rw5 rw6 tz4 tz6 ug5 ug6 zm5 zm6 z
 
 ######################################################################
 
-all: combines.output surveys.Rout condomStatus.Rout
+baseline: combines.output surveys.Rout
 
 ### Selecting
 
@@ -179,10 +179,6 @@ combines.summary.output: $(sets:%=%.combined.summary.Routput)
 surveys.Rout: $(sets:%=%.combined.Rout.envir) surveys.R
 	$(run-R)
 
-## Does not work! Does summary not play nicely with plyr?
-surveys.summary.Routput: surveys.R
-
-
 #####################################################################
 
 finalrecode.Rout: surveys.Rout finalrecode.R
@@ -229,7 +225,6 @@ partnerYearStatus.Rout: surveys.Rout partnerYearStatus.R
 %_varlvlsum.Rout: %.Rout varlvlsum.R
 	$(run-R)
 
-
 .PRECIOUS: %_isoplots.Rout
 
 condomStatus_isoplots.Rout:
@@ -244,7 +239,7 @@ partnerYearStatus_isoplots.Rout:
 %_intplots.Rout: %.Rout ordfuns.Rout plotFuns.Rout intfuns.Rout intplot.R
 	$(run-R)
 
-## Int summaries
+## Interaction summaries
 
 condomStatus_int.Rout:
 partnerYearStatus_int.Rout:
