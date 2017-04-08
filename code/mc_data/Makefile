@@ -25,7 +25,7 @@ ms = $(code)/makestuff
 
 ## converted is where we keep simple, slightly cleaned R versions of DHS sets
 ## convert_rules are the rules for converting them
-converted/%: $(converted) 
+converted/%: converted
 	cd $(convert_rules) && $(MAKE) converted/$*
 
 converted: $(converted)
