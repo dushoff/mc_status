@@ -1,1 +1,1 @@
-EDIT = gvim
+EDIT = gvim -f
