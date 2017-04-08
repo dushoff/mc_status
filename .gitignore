@@ -27,31 +27,11 @@ makestuff/
 *.Rout.envir
 *.Routput
 *.output
-.Rproj.user
 
 commit.time
 
-.localdir/
-MC_varlvl
-autorefs
-cribdir
-datadir
-figdrop
-localdir/
-overleaf/
-
-WorkingWiki-export/
-
-auto.bib
-refs.bib
-%.bibmk
-%.point
-
-maketest/
-%.clip.bib
-
-%.makelog
-%.deps
-%.reqs
-%.mk
-
+code/DHS_convert/converted
+code/DHS_convert/downloaded
+code/mc_data/converted
+code/mc_data/selected
+data/DHS_downloads/*.sav
