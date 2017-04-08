@@ -2,7 +2,7 @@
 ### Hooks 
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: dev 
+target pngtarget pdftarget vtarget acrtarget: ke4.recode.Rout 
 
 ##################################################################
 
@@ -12,9 +12,9 @@ Sources = Makefile .gitignore README.md LICENSE
 ## The recommended way to change these directories is with a local makefile. 
 ## The recommended way to make a local makefile is to push a file with a specific name, and then manually link local.mk to your specific local makefile
 ## local.mk does not exist out of the box; this should not cause problems
-code = ./code
-data = ./data
-mc_data = $(data)/mc_data
+dirroot = ./
+code = $(dirroot)/code
+data = $(dirroot)/data
 
 -include local.mk
 ms = $(code)/makestuff
@@ -26,6 +26,13 @@ dev:
 
 ##################################################################
 
+# Pointers to specific upstream directories
+
+mc_data = $(data)/mc_data
+selection = $(code)/mc_data
+
+######################################################################
+
 Sources += $(wildcard *.R)
 
 ### Data sets
@@ -36,6 +43,12 @@ sets = ke4 ke7 ls4 ls7 mw4 mw6 mz4 mz6 nm5 nm6 rw5 rw6 tz4 tz6 ug5 ug6 zm5 zm6 z
 all: combines.output surveys.Rout condomStatus.Rout
 
 ### Selecting
+
+### Upstream files are first "converted", then selected. We ask for selected files from the mc_data directory; Upstream rules responsible for asking for converted files.
+
+Sources += $(selection)/Makefile $(selection)/select.csv $(selection)/wselect.R
+$(mc_data)/%.Rout:
+	cd $(selection) && $(MAKE) selected/$*.Rout
 
 ### Recoding
 Sources += $(wildcard *.ccsv *.tsv)
