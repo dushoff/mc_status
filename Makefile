@@ -1,8 +1,7 @@
 ### mc_status
 ### Hooks 
 current: target
-
-target pngtarget pdftarget vtarget acrtarget: dev 
+-include target.mk
 
 ##################################################################
 
